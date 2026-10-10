@@ -25,6 +25,20 @@ def api(tmp_path,monkeypatch):
     mod.db.close()
 def login(client,role='operator'):
     assert client.post('/api/login',json={'name':role,'password':'test-only-pass-12345'}).status_code==200
+
+def test_weather_permissions_and_audit(api,monkeypatch):
+    c,m,s=api
+    assert c.get('/api/weather').status_code==401
+    login(c,'viewer')
+    assert c.put('/api/weather/location',json={'id':1}).status_code==403
+    assert c.get('/api/weather/search?q=Berlin').status_code==403
+    async def proxy(path,method='GET',params=None,body=None):return {'location':None} if path=='/forecast' else {'id':1,'name':'Berlin'}
+    monkeypatch.setattr(m,'weather_request',proxy)
+    assert c.get('/api/weather').status_code==200
+    login(c)
+    assert c.put('/api/weather/location',json={'id':1}).status_code==200
+    assert c.get('/api/audit').json()[0]['target']=='weather.location'
+    assert not s
 def body(**extra):return dict(tag='temperature.requested',value=22,expected=20,command_id=str(uuid.uuid4()))|extra
 def test_anonymous_and_viewer_write_denied(api):
     c,m,s=api;assert c.get('/api/state').status_code==401

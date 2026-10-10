@@ -68,7 +68,7 @@ services:
       retries: 3
   backend:
     <<: *common
-    image: rlt-simulation-backend:1.0.1
+    image: rlt-simulation-backend:1.1.0
     command: [uvicorn, backend.app:app, --host, 0.0.0.0, --port, '8000']
     environment: {MQTT_HOST: mqtt, DB_PATH: /data/backend.sqlite, INFLUX_URL: 'http://influxdb:8086'}
     volumes: [backend_data:/data]
@@ -82,7 +82,7 @@ services:
       retries: 10
       start_period: 30s
   frontend:
-    image: rlt-simulation-frontend:1.0.2
+    image: rlt-simulation-frontend:1.1.0
     build: {context: ., dockerfile: docker/Frontend.Dockerfile}
     restart: unless-stopped
     ports: ['127.0.0.1:8080:80']
@@ -111,9 +111,30 @@ services:
       interval: 15s
       retries: 5
     networks: [plant, web]
+  weather:
+    <<: *common
+    image: rlt-simulation-weather:1.1.0
+    command: [uvicorn, backend.weather:app, --host, 0.0.0.0, --port, '8010']
+    environment:
+      WEATHER_DB_PATH: /data/weather.sqlite
+      INFLUX_URL: http://influxdb:8086
+      WEATHER_INTERVAL_SECONDS: ${WEATHER_INTERVAL_SECONDS:-1800}
+      WEATHER_RETENTION_DAYS: ${WEATHER_RETENTION_DAYS:-365}
+      WEATHER_API_KEY: ${WEATHER_API_KEY:-}
+      HTTPS_PROXY: ${WEATHER_HTTPS_PROXY:-}
+      NO_PROXY: influxdb,localhost,127.0.0.1
+    volumes: [weather_data:/data]
+    networks: [plant, weather_outbound]
+    depends_on:
+      influxdb: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8010/health',timeout=3)"]
+      interval: 15s
+      retries: 5
 networks:
   plant: {internal: true}
   web: {}
+  weather_outbound: {}
 volumes:
   broker_config:
   broker_data:
@@ -122,3 +143,4 @@ volumes:
   simulation_data:
   backend_data:
   grafana_data:
+  weather_data:

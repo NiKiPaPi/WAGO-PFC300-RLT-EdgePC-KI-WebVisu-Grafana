@@ -1,0 +1,45 @@
+{
+  "timestamp": 1791659473.158366,
+  "mode": "real Open-Meteo / Docker / InfluxDB",
+  "checks": [
+    {
+      "name": "no hardcoded default location",
+      "passed": true
+    },
+    {
+      "name": "real 7 local days",
+      "passed": true
+    },
+    {
+      "name": "hourly temperature and humidity",
+      "passed": true
+    },
+    {
+      "name": "Influx write acknowledged",
+      "passed": true
+    },
+    {
+      "name": "location audited",
+      "passed": true
+    },
+    {
+      "name": "as-of prediction returns correct version",
+      "passed": true
+    },
+    {
+      "name": "control setpoint unchanged",
+      "passed": true
+    }
+  ],
+  "location": {
+    "id": 2950159,
+    "name": "Berlin",
+    "latitude": 52.52437,
+    "longitude": 13.41053,
+    "timezone": "Europe/Berlin",
+    "country": "Deutschland",
+    "region": "Land Berlin"
+  },
+  "version": "63d1f40c-7a8b-43b9-b183-474012e48448",
+  "hours": 168
+}

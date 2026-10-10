@@ -11,6 +11,6 @@ for line in run('compose','ps','--format','json').splitlines():
     r=json.loads(line)
     services.append({k:r[k] for k in ['Name','Service','State','Health','Image','Ports']})
     services[-1]['image_id']=run('inspect',r['Name'],'--format','{{.Image}}').strip()
-evidence={'timestamp':dt.datetime.now(dt.timezone.utc).isoformat(),'engine':engine,'services':services,'all_healthy':len(services)==6 and all(x['Health']=='healthy' for x in services)}
+evidence={'timestamp':dt.datetime.now(dt.timezone.utc).isoformat(),'engine':engine,'services':services,'all_healthy':{x['Service'] for x in services}=={'mqtt','influxdb','simulation','backend','frontend','grafana','weather'} and all(x['Health']=='healthy' for x in services)}
 Path('docs/container-state.json').write_text(json.dumps(evidence,ensure_ascii=False,indent=2),encoding='utf-8')
 print(json.dumps({'engine':engine,'services':len(services),'all_healthy':evidence['all_healthy']}))

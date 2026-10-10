@@ -147,6 +147,41 @@ async def lifespan(app):
     yield
     task.cancel(); client.disconnect(); client.loop_stop()
 app=FastAPI(title='RLT Simulation API',version=VERSION,lifespan=lifespan)
+
+async def weather_request(path,method='GET',params=None,body=None):
+    try:
+        async with httpx.AsyncClient(timeout=45) as http:
+            r=await http.request(method,os.getenv('WEATHER_URL','http://weather:8010')+path,params=params,json=body)
+            if r.status_code>=400: raise HTTPException(r.status_code,r.json().get('detail','Wetterdienstfehler'))
+            return r.json()
+    except httpx.HTTPError: raise HTTPException(503,'Wetterdienst vorübergehend nicht erreichbar')
+
+@app.get('/api/weather')
+async def weather_get(request:Request):
+    user(request); return await weather_request('/forecast')
+
+@app.get('/api/weather/search')
+async def weather_search(request:Request,q:str):
+    who=user(request,['operator','administrator'])
+    key='weather:'+who['name']; now=time.time()
+    attempts[key]=[t for t in attempts.get(key,[]) if now-t<60]
+    if len(attempts[key])>=10: raise HTTPException(429,'Bitte vor der nächsten Ortssuche warten')
+    attempts[key].append(now)
+    return await weather_request('/search',params={'q':q})
+
+@app.put('/api/weather/location')
+async def weather_location(request:Request):
+    who=user(request,['operator','administrator'])
+    body=await request.json()
+    if not isinstance(body,dict) or set(body)!= {'id'} or type(body['id']) is not int: raise HTTPException(422,'Ortskennung erforderlich')
+    old=(await weather_request('/forecast'))['location']
+    new=await weather_request('/location','PUT',body=body)
+    with mutex: audit(who['name'],'weather.location',old,new,None,'updated')
+    return new
+
+@app.get('/api/weather/history')
+async def weather_history(request:Request,location_id:int,as_of:str):
+    user(request); return await weather_request('/history',params={'location_id':location_id,'as_of':as_of})
 class Strict(BaseModel): model_config=ConfigDict(extra='forbid')
 class Login(Strict): name:str; password:str
 class Command(Strict): tag:str; value:float|str|bool; expected:float|str|bool; command_id:str

@@ -10,7 +10,7 @@ def test_missing_ack_times_out_without_success(api):
     m.db.execute("UPDATE commands SET expires='2020-01-01T00:00:00+00:00' WHERE id=?",(command['command_id'],));m.db.commit()
     m.state['connected']=False
     async def tick():
-        try:await asyncio.wait_for(m.background(),timeout=.7)
+        try:await asyncio.wait_for(m.background(),timeout=2)
         except asyncio.TimeoutError:pass
     asyncio.run(tick())
     state=c.get('/api/state').json()

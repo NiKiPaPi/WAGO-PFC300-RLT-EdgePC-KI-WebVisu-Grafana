@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-10T12:00:42.778217+00:00",
+  "timestamp": "2026-10-10T19:15:26.659419+00:00",
   "engine": {
     "version": "29.8.2",
     "os": "linux",
@@ -11,18 +11,18 @@
       "Service": "backend",
       "State": "running",
       "Health": "healthy",
-      "Image": "rlt-simulation-backend:1.0.1",
+      "Image": "rlt-simulation-backend:1.1.0",
       "Ports": "",
-      "image_id": "sha256:264b56d7e240561397ac95c4f33d03a421229036084363489b690bcfdd295c2d"
+      "image_id": "sha256:c1696fabab6d144fb93f0ee65fa5e8aad2c5a8af124f710adfc10fad21a5d1e6"
     },
     {
       "Name": "rlt-simulation-frontend-1",
       "Service": "frontend",
       "State": "running",
       "Health": "healthy",
-      "Image": "rlt-simulation-frontend:1.0.2",
+      "Image": "rlt-simulation-frontend:1.1.0",
       "Ports": "127.0.0.1:8080->80/tcp",
-      "image_id": "sha256:30d81eeb6e401daf79f71ad7b3b483409b7108ad60f496ff81899cdf08202c67"
+      "image_id": "sha256:aef16bbf9302f38fde51c2a8047354bcd9debf24e67e211a490f6083e201db4f"
     },
     {
       "Name": "rlt-simulation-grafana-1",
@@ -59,6 +59,15 @@
       "Image": "rlt-simulation-simulation:1.0.1",
       "Ports": "",
       "image_id": "sha256:6b582b98a22735f6b1e67ba6e436c1a7f93882f5e1764648bd9951a904e41557"
+    },
+    {
+      "Name": "rlt-simulation-weather-1",
+      "Service": "weather",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "rlt-simulation-weather:1.1.0",
+      "Ports": "",
+      "image_id": "sha256:343b5a953178afcb3795a83e1d064149d8c38014482232e352054e8dff4a5c2a"
     }
   ],
   "all_healthy": true

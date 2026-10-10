@@ -18,3 +18,7 @@ Voraussetzung: Docker Desktop/Compose v2 mit Linux-Containern. HMI unter http://
 - [Abnahmebedingungen](docs/ACCEPTANCE.md)
 
 Die tatsächliche Docker-Simulationskette läuft und wurde mit Mosquitto, InfluxDB und Grafana geprüft. Operator-Sollwert 20→22 °C, Audit, Timeout/Veralterung, Historie nach Neustart und unabhängige Wiederherstellung sind nachgewiesen. Siehe [Container-Abnahme](docs/DOCKER_ACCEPTANCE_REPORT.md). Das erste ZIP 1.0.0 bleibt als gesicherter früherer Stand erhalten; die geprüfte Containerfassung wird als 1.0.1 ausgeliefert.
+
+## Wettervorhersage (1.1.0)
+
+Unter dem Anlagenbild steht eine standortabhängige 7-Tage-Vorhersage bereit. Standort als Operator/Administrator suchen und speichern. Keine Kopplung an die RLT-Regelung. Einrichtung, Netzwerk, Archivierung und EdgePC-Migration: [docs/WEATHER.md](docs/WEATHER.md).

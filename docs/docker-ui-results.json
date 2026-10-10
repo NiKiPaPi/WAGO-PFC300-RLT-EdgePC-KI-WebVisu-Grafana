@@ -1,6 +1,6 @@
 {
   "mode": "real Docker HMI / Mosquitto / InfluxDB / Grafana",
-  "timestamp": "2026-10-10T11:57:33.387Z",
+  "timestamp": "2026-10-10T19:11:20.261Z",
   "checks": [
     {
       "name": "operator login and fresh WebSocket",

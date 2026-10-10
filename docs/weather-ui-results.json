@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-10-10T19:11:52.882Z",
+  "checks": [
+    {
+      "name": "desktop weather layout",
+      "passed": true
+    },
+    {
+      "name": "tablet weather layout",
+      "passed": true
+    },
+    {
+      "name": "phone weather layout",
+      "passed": true
+    },
+    {
+      "name": "Viewer displays forecast without location mutation",
+      "passed": true
+    }
+  ]
+}
