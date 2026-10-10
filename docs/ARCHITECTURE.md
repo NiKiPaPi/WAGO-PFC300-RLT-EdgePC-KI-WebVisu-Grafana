@@ -1,0 +1,15 @@
+# Architektur, Daten und Modellgrenzen
+
+Browser → Nginx → FastAPI → MQTT-Broker → Simulation → MQTT → FastAPI → WebSocket → Browser. Backend schreibt frische Telemetrie zusätzlich nach InfluxDB; Grafana fragt Influx über eine serverseitige Datenquelle ab. Keine direkte HMI/Simulation-Verbindung, keine CODESYS WebVisu, keine Laufzeit-KI.
+
+React 19, TypeScript 5.8, SVG und CSS bilden die deutschsprachige responsive Oberfläche. SVG-Fanrotation verwendet echte simulierte Drehzahlrückmeldung und stoppt bei veralteten Daten. Bei Kommunikationsfehlern zeigt die Oberfläche Textwarnung, Datenalter und gesperrte Bedienung. Lokale Rollen: Viewer liest, Operator bedient, Administrator verwaltet zusätzlich Benutzer/Systemeinstellungen. SQLite persistiert PBKDF2-Passworthashes, gehashte Sitzungstokens, Befehle, Audit und Einstellungen. Echte Tokens/Passwörter stehen nur in lokaler .env/Volume-Konfiguration.
+
+Tag-Katalog `contracts/tags.json` ist aus `contracts/core.py` generiert. IDs, Typen, Einheit, Grenzen, Richtung, Rollen, MQTT-Zuordnung, Measurement und Qualität gelten für alle Komponenten. JSON-Schemas sind Draft 2020-12, Version 1.0. Tag-Zeitstempel ist der gemeinsame Snapshot-Zeitstempel. Gespeicherte Zeit UTC, Anzeige standardmäßig Europe/Berlin, konfigurierbar.
+
+Simulationsannahmen (keine Gerätedaten): außen 8 °C, Raum 21 °C, initial Zuluft 20 °C; WRG-Wirkungsgrad 0,7; thermische Zeitkonstante 45 s; Aktuator-/Ventilatorgeschwindigkeit 20 Prozentpunkte/s; PI Kp=8, Ki=0,12; Druck 600 Pa bei 100 %; Filter Δp 90 Pa bei 100 %. Heizwirkung maximal +18 K, Kühlwirkung −12 K. Vorgaben 0–100 %, Zuluftsollwert 16–30 °C. Modellannahmen sind über SIM_PARAMETERS konfigurierbar; Defaultwerte stehen in simulation/model.py. Druck folgt dem Quadrat der Drehzahl. Keine reale Dimensionierung.
+
+Priorität: simulierte Verriegelung > Aus > Anfahr-/Abfahrsequenz > Auto/Hand. Handvorgaben wirken nur mit Freigabe und offenen Klappen. Aus stoppt Ventilatoren vor Klappenschluss. Heiz-/Kühlanforderungen sind gegenseitig verriegelt; beim Wechsel wartet das Modell auf geschlossene Gegenventil-Rückmeldung. PI-Integrator wird auf ±100 begrenzt und bei fehlender Luftströmung zurückgesetzt. Sollwertänderung verändert keinen Istwert direkt. Fehler-/Alarmzustände aktiv, quittiert und zurückgekehrt sind separat.
+
+Anwendung ist eine Demo, kein Nachweis einer sicherheitsgerichteten Funktion. Reale Frost-/Brand-/Motor- und andere Schutzketten bleiben unabhängiger Schutztechnik bzw. SPS vorbehalten. TBD – technische Klärung erforderlich: sämtliche realen Geräteparameter, I/O, Sicherheitsfunktion, Netzwerk/TLS, Rechte-/Token-Trennung, Aufbewahrung personenbezogener Auditdaten, Dauerlast, Disaster-Recovery und Edge-Ressourcen.
+
+Simulationsjournal persistiert Befehlsübernahme. Nach Simulationsneustart werden Aktuator-/Temperaturwerte aus der letzten Befehlsübernahme wiederhergestellt, nicht aus jeder einzelnen Zeitschrittbewegung; Neustart ist deshalb kein physikalisch kontinuierlicher Betrieb. Historie zeigt die entstehende Lücke. Für produktive Anlage sind Wiederanfahrstrategie und SPS-seitige Persistenz gesondert festzulegen.

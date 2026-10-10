@@ -1,0 +1,12 @@
+user api
+topic write rlt/simulation/v1/commands
+topic read rlt/simulation/v1/telemetry
+topic read rlt/simulation/v1/results
+topic read rlt/simulation/v1/alarms
+topic read rlt/simulation/v1/status
+user simulation
+topic read rlt/simulation/v1/commands
+topic write rlt/simulation/v1/telemetry
+topic write rlt/simulation/v1/results
+topic write rlt/simulation/v1/alarms
+topic write rlt/simulation/v1/status

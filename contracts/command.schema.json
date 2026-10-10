@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "command_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "tag": {
+      "enum": [
+        "temperature.requested",
+        "mode.requested",
+        "alarm.ack",
+        "fault.inject",
+        "fan.supply.request",
+        "fan.supply.enable",
+        "fan.extract.request",
+        "fan.extract.enable",
+        "actuator.outdoor.request",
+        "actuator.exhaust.request",
+        "actuator.heat.request",
+        "actuator.cool.request",
+        "actuator.recovery.request"
+      ]
+    },
+    "value": {
+      "type": [
+        "number",
+        "string",
+        "boolean"
+      ]
+    },
+    "expected": {
+      "type": [
+        "number",
+        "string",
+        "boolean"
+      ]
+    },
+    "user": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "(Z|\\+00:00)$"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "(Z|\\+00:00)$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "command_id",
+    "tag",
+    "value",
+    "expected",
+    "user",
+    "created_at",
+    "expires_at"
+  ]
+}

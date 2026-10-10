@@ -1,0 +1,124 @@
+name: rlt-simulation
+x-common: &common
+  build:
+    context: .
+    dockerfile: docker/Python.Dockerfile
+  env_file: .env
+  restart: unless-stopped
+  networks: [plant]
+services:
+  broker-init:
+    image: eclipse-mosquitto:2.0.21
+    env_file: .env
+    user: root
+    entrypoint: /bin/sh
+    command:
+      - -ec
+      - |
+        cp /source/mosquitto.conf /mosquitto/config/mosquitto.conf
+        cp /source/acl /mosquitto/config/acl
+        printf '%s:%s\n%s:%s\n' "$$MQTT_API_USER" "$$MQTT_API_PASSWORD" "$$MQTT_SIM_USER" "$$MQTT_SIM_PASSWORD" > /mosquitto/config/passwords
+        mosquitto_passwd -U /mosquitto/config/passwords
+        chown -R mosquitto:mosquitto /mosquitto/config
+        chmod 600 /mosquitto/config/passwords
+    volumes: [./mqtt:/source:ro, broker_config:/mosquitto/config]
+    networks: [plant]
+  mqtt:
+    image: eclipse-mosquitto:2.0.21
+    restart: unless-stopped
+    depends_on:
+      broker-init: {condition: service_completed_successfully}
+    volumes: [broker_config:/mosquitto/config, broker_data:/mosquitto/data]
+    env_file: .env
+    healthcheck:
+      test: [CMD-SHELL, 'mosquitto_sub -h localhost -u "$$MQTT_API_USER" -P "$$MQTT_API_PASSWORD" -t rlt/simulation/v1/status -C 1 -W 1; code=$$?; test "$$code" = 0 || test "$$code" = 27']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks: [plant]
+  influxdb:
+    image: influxdb:2.7.11
+    restart: unless-stopped
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: admin
+      DOCKER_INFLUXDB_INIT_PASSWORD: ${INFLUX_PASSWORD:?Generate .env}
+      DOCKER_INFLUXDB_INIT_ORG: rlt
+      DOCKER_INFLUXDB_INIT_BUCKET: rlt
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: ${INFLUX_TOKEN:?Generate .env}
+      DOCKER_INFLUXDB_INIT_RETENTION: ${INFLUX_RETENTION:-30d}
+    volumes: [influx_data:/var/lib/influxdb2, influx_config:/etc/influxdb2]
+    healthcheck:
+      test: [CMD, influx, ping]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    networks: [plant]
+  simulation:
+    <<: *common
+    image: rlt-simulation-simulation:1.0.1
+    command: [python, -m, simulation.main]
+    environment: {MQTT_HOST: mqtt, SIM_JOURNAL: /data/commands.json}
+    volumes: [simulation_data:/data]
+    depends_on:
+      mqtt: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import os,time; assert time.time()-os.path.getmtime('/data/heartbeat')<5"]
+      interval: 15s
+      retries: 3
+  backend:
+    <<: *common
+    image: rlt-simulation-backend:1.0.1
+    command: [uvicorn, backend.app:app, --host, 0.0.0.0, --port, '8000']
+    environment: {MQTT_HOST: mqtt, DB_PATH: /data/backend.sqlite, INFLUX_URL: 'http://influxdb:8086'}
+    volumes: [backend_data:/data]
+    depends_on:
+      mqtt: {condition: service_healthy}
+      influxdb: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/ready',timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+  frontend:
+    image: rlt-simulation-frontend:1.0.1
+    build: {context: ., dockerfile: docker/Frontend.Dockerfile}
+    restart: unless-stopped
+    ports: ['127.0.0.1:8080:80']
+    depends_on:
+      backend: {condition: service_healthy}
+    networks: [plant, web]
+  grafana:
+    image: grafana/grafana:11.6.1
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:?Generate .env}
+      GF_AUTH_ANONYMOUS_ENABLED: 'false'
+      GF_USERS_ALLOW_SIGN_UP: 'false'
+      GF_USERS_DEFAULT_THEME: light
+      GF_PLUGINS_PREINSTALL_DISABLED: 'true'
+      GF_PLUGINS_DISABLE_PLUGINS: grafana-lokiexplore-app
+      GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES: 'false'
+      INFLUX_TOKEN: ${INFLUX_TOKEN}
+    ports: ['127.0.0.1:3000:3000']
+    volumes: [grafana_data:/var/lib/grafana, ./grafana/provisioning:/etc/grafana/provisioning:ro, ./grafana/dashboards:/var/lib/grafana/dashboards:ro]
+    depends_on:
+      influxdb: {condition: service_healthy}
+    healthcheck:
+      test: [CMD-SHELL, 'wget -q -O /dev/null http://localhost:3000/api/health']
+      interval: 15s
+      retries: 5
+    networks: [plant, web]
+networks:
+  plant: {internal: true}
+  web: {}
+volumes:
+  broker_config:
+  broker_data:
+  influx_data:
+  influx_config:
+  simulation_data:
+  backend_data:
+  grafana_data:

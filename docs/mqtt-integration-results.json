@@ -1,0 +1,62 @@
+{
+  "mode": "loopback MQTT with Influx HTTP test double",
+  "checks": [
+    {
+      "name": "backend ready over real MQTT",
+      "passed": true
+    },
+    {
+      "name": "20 to 22 command executes via actual MQTT",
+      "passed": true
+    },
+    {
+      "name": "actual value differs from accepted setpoint",
+      "passed": true
+    },
+    {
+      "name": "audit contains correlated command",
+      "passed": true
+    },
+    {
+      "name": "duplicate API call yields one pending record",
+      "passed": true
+    },
+    {
+      "name": "authenticated initial WebSocket snapshot",
+      "passed": true
+    },
+    {
+      "name": "WebSocket subsequent update",
+      "passed": true
+    },
+    {
+      "name": "dynamic temperature response",
+      "passed": true
+    },
+    {
+      "name": "numeric and state measurements separated",
+      "passed": true
+    },
+    {
+      "name": "interlock rejection over MQTT",
+      "passed": true
+    },
+    {
+      "name": "alarm return distinct from acknowledgement",
+      "passed": true
+    },
+    {
+      "name": "viewer cannot write via actual HTTP",
+      "passed": true
+    },
+    {
+      "name": "stopped simulation makes telemetry stale",
+      "passed": true
+    }
+  ],
+  "timestamp": "2026-10-10T06:41:29Z",
+  "command_id": "8b7f998d-2c94-443c-a8b2-da0786a88271",
+  "actual_before": 19.6312152330662,
+  "actual_after": 20.082590565911232,
+  "recorded_lines": 338
+}

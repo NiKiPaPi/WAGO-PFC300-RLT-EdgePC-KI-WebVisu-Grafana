@@ -1,0 +1,988 @@
+{
+  "uid": "rlt",
+  "title": "RLT · Simulationsanlage 01",
+  "schemaVersion": 40,
+  "version": 1,
+  "refresh": "5s",
+  "timezone": "browser",
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s"
+    ],
+    "time_options": [
+      "1h",
+      "6h",
+      "24h",
+      "7d"
+    ]
+  },
+  "tags": [
+    "simulation"
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "tags",
+        "label": "Datenpunkte",
+        "type": "custom",
+        "multi": true,
+        "includeAll": true,
+        "query": "Zulufttemperatur akzeptiert : temperature.accepted,Zulufttemperatur Ist : temperature.supply,Außentemperatur : temperature.outdoor,Ablufttemperatur : temperature.extract,Fortlufttemperatur : temperature.exhaust,Zuluftventilator Stellbefehl : fan.supply.command,Zuluftventilator Rückmeldung : fan.supply.feedback,Zuluftdruck : pressure.supply,Zuluftfilter Differenzdruck : filter.supply.dp,Abluftventilator Stellbefehl : fan.extract.command,Abluftventilator Rückmeldung : fan.extract.feedback,Abluftdruck : pressure.extract,Abluftfilter Differenzdruck : filter.extract.dp,Außenluftklappe command : actuator.outdoor.command,Außenluftklappe feedback : actuator.outdoor.feedback,Fortluftklappe command : actuator.exhaust.command,Fortluftklappe feedback : actuator.exhaust.feedback,Heizventil command : actuator.heat.command,Heizventil feedback : actuator.heat.feedback,Kühlventil command : actuator.cool.command,Kühlventil feedback : actuator.cool.feedback,Wärmerückgewinnung command : actuator.recovery.command,Wärmerückgewinnung feedback : actuator.recovery.feedback",
+        "options": [
+          {
+            "text": "Zulufttemperatur akzeptiert",
+            "value": "temperature.accepted",
+            "selected": true
+          },
+          {
+            "text": "Zulufttemperatur Ist",
+            "value": "temperature.supply",
+            "selected": true
+          },
+          {
+            "text": "Außentemperatur",
+            "value": "temperature.outdoor",
+            "selected": true
+          },
+          {
+            "text": "Ablufttemperatur",
+            "value": "temperature.extract",
+            "selected": false
+          },
+          {
+            "text": "Fortlufttemperatur",
+            "value": "temperature.exhaust",
+            "selected": false
+          },
+          {
+            "text": "Zuluftventilator Stellbefehl",
+            "value": "fan.supply.command",
+            "selected": false
+          },
+          {
+            "text": "Zuluftventilator Rückmeldung",
+            "value": "fan.supply.feedback",
+            "selected": false
+          },
+          {
+            "text": "Zuluftdruck",
+            "value": "pressure.supply",
+            "selected": false
+          },
+          {
+            "text": "Zuluftfilter Differenzdruck",
+            "value": "filter.supply.dp",
+            "selected": false
+          },
+          {
+            "text": "Abluftventilator Stellbefehl",
+            "value": "fan.extract.command",
+            "selected": false
+          },
+          {
+            "text": "Abluftventilator Rückmeldung",
+            "value": "fan.extract.feedback",
+            "selected": false
+          },
+          {
+            "text": "Abluftdruck",
+            "value": "pressure.extract",
+            "selected": false
+          },
+          {
+            "text": "Abluftfilter Differenzdruck",
+            "value": "filter.extract.dp",
+            "selected": false
+          },
+          {
+            "text": "Außenluftklappe command",
+            "value": "actuator.outdoor.command",
+            "selected": false
+          },
+          {
+            "text": "Außenluftklappe feedback",
+            "value": "actuator.outdoor.feedback",
+            "selected": false
+          },
+          {
+            "text": "Fortluftklappe command",
+            "value": "actuator.exhaust.command",
+            "selected": false
+          },
+          {
+            "text": "Fortluftklappe feedback",
+            "value": "actuator.exhaust.feedback",
+            "selected": false
+          },
+          {
+            "text": "Heizventil command",
+            "value": "actuator.heat.command",
+            "selected": false
+          },
+          {
+            "text": "Heizventil feedback",
+            "value": "actuator.heat.feedback",
+            "selected": false
+          },
+          {
+            "text": "Kühlventil command",
+            "value": "actuator.cool.command",
+            "selected": false
+          },
+          {
+            "text": "Kühlventil feedback",
+            "value": "actuator.cool.feedback",
+            "selected": false
+          },
+          {
+            "text": "Wärmerückgewinnung command",
+            "value": "actuator.recovery.command",
+            "selected": false
+          },
+          {
+            "text": "Wärmerückgewinnung feedback",
+            "value": "actuator.recovery.feedback",
+            "selected": false
+          }
+        ],
+        "current": {
+          "text": [
+            "Zulufttemperatur akzeptiert",
+            "Zulufttemperatur Ist",
+            "Außentemperatur"
+          ],
+          "value": [
+            "temperature.accepted",
+            "temperature.supply",
+            "temperature.outdoor"
+          ]
+        }
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Messwerte & akzeptierte Sollwerte · Datenlücken bleiben offen",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 13
+      },
+      "datasource": {
+        "type": "influxdb",
+        "uid": "rlt-influx"
+      },
+      "targets": [
+        {
+          "refId": "N0",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"temperature.accepted\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N1",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"temperature.supply\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N2",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"temperature.outdoor\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N3",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"temperature.extract\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N4",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"temperature.exhaust\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N5",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"fan.supply.command\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N6",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"fan.supply.feedback\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N7",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"pressure.supply\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N8",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"filter.supply.dp\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N9",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"fan.extract.command\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N10",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"fan.extract.feedback\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N11",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"pressure.extract\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N12",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"filter.extract.dp\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N13",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"actuator.outdoor.command\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N14",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"actuator.outdoor.feedback\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N15",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"actuator.exhaust.command\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N16",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"actuator.exhaust.feedback\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N17",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"actuator.heat.command\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N18",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"actuator.heat.feedback\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N19",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"actuator.cool.command\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N20",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"actuator.cool.feedback\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N21",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"actuator.recovery.command\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        },
+        {
+          "refId": "N22",
+          "query": "from(bucket: \"rlt\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r._measurement == \"rlt\" and r._field == \"value\")\n  |> filter(fn: (r) => r.tag == \"actuator.recovery.feedback\" and r.tag =~ /^${tags:regex}$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: true)\n  |> yield(name: \"mean\")"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "spanNulls": false,
+            "axisPlacement": "auto"
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Zulufttemperatur akzeptiert"
+              },
+              {
+                "id": "unit",
+                "value": "celsius"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "°C"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "left"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N1"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Zulufttemperatur Ist"
+              },
+              {
+                "id": "unit",
+                "value": "celsius"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "°C"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "left"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N2"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Außentemperatur"
+              },
+              {
+                "id": "unit",
+                "value": "celsius"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "°C"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "left"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N3"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Ablufttemperatur"
+              },
+              {
+                "id": "unit",
+                "value": "celsius"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "°C"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "left"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N4"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Fortlufttemperatur"
+              },
+              {
+                "id": "unit",
+                "value": "celsius"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "°C"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "left"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N5"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Zuluftventilator Stellbefehl"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N6"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Zuluftventilator Rückmeldung"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N7"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Zuluftdruck"
+              },
+              {
+                "id": "unit",
+                "value": "pressurepa"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Pa"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N8"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Zuluftfilter Differenzdruck"
+              },
+              {
+                "id": "unit",
+                "value": "pressurepa"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Pa"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N9"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Abluftventilator Stellbefehl"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N10"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Abluftventilator Rückmeldung"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N11"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Abluftdruck"
+              },
+              {
+                "id": "unit",
+                "value": "pressurepa"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Pa"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N12"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Abluftfilter Differenzdruck"
+              },
+              {
+                "id": "unit",
+                "value": "pressurepa"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Pa"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N13"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Außenluftklappe command"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N14"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Außenluftklappe feedback"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N15"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Fortluftklappe command"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N16"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Fortluftklappe feedback"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N17"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Heizventil command"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N18"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Heizventil feedback"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N19"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Kühlventil command"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N20"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Kühlventil feedback"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N21"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Wärmerückgewinnung command"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "N22"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Wärmerückgewinnung feedback"
+              },
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "%"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "time"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              },
+              {
+                "id": "displayName",
+                "value": "Zeit"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Zeit"
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "state-timeline",
+      "title": "Anlagenzustand / Betriebsart / Verriegelung",
+      "gridPos": {
+        "x": 0,
+        "y": 13,
+        "w": 24,
+        "h": 7
+      },
+      "datasource": {
+        "type": "influxdb",
+        "uid": "rlt-influx"
+      },
+      "targets": [
+        {
+          "refId": "S0",
+          "query": "from(bucket: \"rlt\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n |> filter(fn: (r) => r._measurement == \"rlt_state\" and r._field == \"value\")\n |> filter(fn: (r) => r.tag == \"plant.state\")\n |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: true)\n"
+        },
+        {
+          "refId": "S1",
+          "query": "from(bucket: \"rlt\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n |> filter(fn: (r) => r._measurement == \"rlt_state\" and r._field == \"value\")\n |> filter(fn: (r) => r.tag == \"mode.accepted\")\n |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: true)\n"
+        },
+        {
+          "refId": "S2",
+          "query": "from(bucket: \"rlt\") |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n |> filter(fn: (r) => r._measurement == \"rlt_state\" and r._field == \"value\")\n |> filter(fn: (r) => r.tag == \"interlock.active\")\n |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: true)\n"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "spanNulls": false
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "OFF": {
+                  "text": "Aus"
+                },
+                "RUNNING": {
+                  "text": "Betrieb"
+                },
+                "STARTING": {
+                  "text": "Anfahren"
+                },
+                "STOPPING": {
+                  "text": "Abfahren"
+                },
+                "LOCKED": {
+                  "text": "Verriegelt"
+                },
+                "auto": {
+                  "text": "Auto"
+                },
+                "manual": {
+                  "text": "Hand"
+                },
+                "off": {
+                  "text": "Aus"
+                },
+                "true": {
+                  "text": "Aktiv"
+                },
+                "false": {
+                  "text": "Normal"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "S0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Anlagenzustand"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "S1"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Betriebsart akzeptiert"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "S2"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Simulierte Verriegelung aktiv"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

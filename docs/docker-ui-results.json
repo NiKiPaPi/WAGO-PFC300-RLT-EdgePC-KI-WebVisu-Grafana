@@ -1,0 +1,94 @@
+{
+  "mode": "real Docker HMI / Mosquitto / InfluxDB / Grafana",
+  "timestamp": "2026-10-10T07:21:55.646Z",
+  "checks": [
+    {
+      "name": "operator login and fresh WebSocket",
+      "passed": true
+    },
+    {
+      "name": "no testdouble banner",
+      "passed": true
+    },
+    {
+      "name": "component details",
+      "passed": true
+    },
+    {
+      "name": "confirmation target and requested value",
+      "passed": true
+    },
+    {
+      "name": "command result visible",
+      "passed": true
+    },
+    {
+      "name": "desktop page does not overflow",
+      "passed": true
+    },
+    {
+      "name": "desktop controls visible",
+      "passed": true
+    },
+    {
+      "name": "tablet page does not overflow",
+      "passed": true
+    },
+    {
+      "name": "tablet controls visible",
+      "passed": true
+    },
+    {
+      "name": "phone page does not overflow",
+      "passed": true
+    },
+    {
+      "name": "phone controls visible",
+      "passed": true
+    },
+    {
+      "name": "at least three trend tags selected",
+      "passed": true
+    },
+    {
+      "name": "HMI opens protected Grafana link",
+      "passed": true
+    },
+    {
+      "name": "Grafana authenticated login",
+      "passed": true
+    },
+    {
+      "name": "Grafana rendered actual trend panel",
+      "passed": true
+    },
+    {
+      "name": "Grafana shows three selected tags",
+      "passed": true
+    },
+    {
+      "name": "Grafana units rendered",
+      "passed": true
+    },
+    {
+      "name": "mixed °C / % / Pa units rendered",
+      "passed": true
+    },
+    {
+      "name": "viewer cannot edit HMI setpoints",
+      "passed": true
+    },
+    {
+      "name": "no uncaught JavaScript errors",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "docs/docker-hmi-desktop.png",
+    "docs/docker-hmi-tablet.png",
+    "docs/docker-hmi-phone.png",
+    "docs/docker-grafana.png",
+    "docs/docker-grafana-mixed.png"
+  ],
+  "javascript_errors": []
+}

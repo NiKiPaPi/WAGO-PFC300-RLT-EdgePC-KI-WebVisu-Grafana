@@ -1,0 +1,79 @@
+{
+  "mode": "actual React HMI with loopback MQTT; Influx HTTP test double; no Grafana",
+  "checks": [
+    {
+      "name": "operator login / fresh WebSocket",
+      "passed": true
+    },
+    {
+      "name": "SVG component dialog",
+      "passed": true
+    },
+    {
+      "name": "old/new/target confirmation",
+      "passed": true
+    },
+    {
+      "name": "command tracking visible",
+      "passed": true
+    },
+    {
+      "name": "navigation Trends & Historie",
+      "passed": true
+    },
+    {
+      "name": "navigation Alarme & Ereignisse",
+      "passed": true
+    },
+    {
+      "name": "navigation Einstellungen",
+      "passed": true
+    },
+    {
+      "name": "navigation Übersicht",
+      "passed": true
+    },
+    {
+      "name": "desktop no page overflow",
+      "passed": true
+    },
+    {
+      "name": "desktop controls visible",
+      "passed": true
+    },
+    {
+      "name": "tablet no page overflow",
+      "passed": true
+    },
+    {
+      "name": "tablet controls visible",
+      "passed": true
+    },
+    {
+      "name": "phone no page overflow",
+      "passed": true
+    },
+    {
+      "name": "phone controls visible",
+      "passed": true
+    },
+    {
+      "name": "viewer controls disabled",
+      "passed": true
+    },
+    {
+      "name": "no JavaScript errors",
+      "passed": true
+    },
+    {
+      "name": "communication outage warning shown",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "docs/hmi-desktop.png",
+    "docs/hmi-tablet.png",
+    "docs/hmi-phone.png"
+  ],
+  "javascript_errors": []
+}

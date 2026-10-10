@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "const": "SIM_INTERLOCK"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "acknowledged": {
+      "type": "boolean"
+    },
+    "returned": {
+      "type": "boolean"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "(Z|\\+00:00)$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "active",
+    "acknowledged",
+    "returned",
+    "timestamp"
+  ]
+}

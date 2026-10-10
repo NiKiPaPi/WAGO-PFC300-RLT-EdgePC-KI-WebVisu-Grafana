@@ -1,0 +1,239 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "(Z|\\+00:00)$"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "quality": {
+      "enum": [
+        "good",
+        "bad"
+      ]
+    },
+    "values": {
+      "type": "object",
+      "properties": {
+        "temperature.requested": {
+          "type": "number",
+          "minimum": 16,
+          "maximum": 30
+        },
+        "temperature.accepted": {
+          "type": "number",
+          "minimum": 16,
+          "maximum": 30
+        },
+        "temperature.supply": {
+          "type": "number"
+        },
+        "temperature.outdoor": {
+          "type": "number"
+        },
+        "temperature.extract": {
+          "type": "number"
+        },
+        "temperature.exhaust": {
+          "type": "number"
+        },
+        "mode.requested": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "manual",
+            "off"
+          ]
+        },
+        "mode.accepted": {
+          "type": "string"
+        },
+        "plant.state": {
+          "type": "string"
+        },
+        "alarm.ack": {
+          "type": "boolean"
+        },
+        "fault.inject": {
+          "type": "boolean"
+        },
+        "interlock.active": {
+          "type": "boolean"
+        },
+        "fan.supply.request": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "fan.supply.enable": {
+          "type": "boolean"
+        },
+        "fan.supply.command": {
+          "type": "number"
+        },
+        "fan.supply.feedback": {
+          "type": "number"
+        },
+        "pressure.supply": {
+          "type": "number"
+        },
+        "filter.supply.dp": {
+          "type": "number"
+        },
+        "fan.extract.request": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "fan.extract.enable": {
+          "type": "boolean"
+        },
+        "fan.extract.command": {
+          "type": "number"
+        },
+        "fan.extract.feedback": {
+          "type": "number"
+        },
+        "pressure.extract": {
+          "type": "number"
+        },
+        "filter.extract.dp": {
+          "type": "number"
+        },
+        "actuator.outdoor.request": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.outdoor.command": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.outdoor.feedback": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.exhaust.request": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.exhaust.command": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.exhaust.feedback": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.heat.request": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.heat.command": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.heat.feedback": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.cool.request": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.cool.command": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.cool.feedback": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.recovery.request": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.recovery.command": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "actuator.recovery.feedback": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "required": [
+        "temperature.requested",
+        "temperature.accepted",
+        "temperature.supply",
+        "temperature.outdoor",
+        "temperature.extract",
+        "temperature.exhaust",
+        "mode.requested",
+        "mode.accepted",
+        "plant.state",
+        "alarm.ack",
+        "fault.inject",
+        "interlock.active",
+        "fan.supply.request",
+        "fan.supply.enable",
+        "fan.supply.command",
+        "fan.supply.feedback",
+        "pressure.supply",
+        "filter.supply.dp",
+        "fan.extract.request",
+        "fan.extract.enable",
+        "fan.extract.command",
+        "fan.extract.feedback",
+        "pressure.extract",
+        "filter.extract.dp",
+        "actuator.outdoor.request",
+        "actuator.outdoor.command",
+        "actuator.outdoor.feedback",
+        "actuator.exhaust.request",
+        "actuator.exhaust.command",
+        "actuator.exhaust.feedback",
+        "actuator.heat.request",
+        "actuator.heat.command",
+        "actuator.heat.feedback",
+        "actuator.cool.request",
+        "actuator.cool.command",
+        "actuator.cool.feedback",
+        "actuator.recovery.request",
+        "actuator.recovery.command",
+        "actuator.recovery.feedback"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "timestamp",
+    "sequence",
+    "quality",
+    "values"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-10-10T07:14:04.069619+00:00",
+  "checks": [
+    {
+      "name": "seven persistent volumes archived",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "restore script completes into isolated volumes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "restored users/audit/commands/settings match source",
+      "passed": true,
+      "detail": {
+        "users": 3,
+        "audit": 41,
+        "commands": 11,
+        "settings": 0
+      }
+    },
+    {
+      "name": "restored accepted setpoint and idempotency journal match",
+      "passed": true,
+      "detail": {
+        "commands": 11,
+        "accepted_setpoint": 22.0
+      }
+    },
+    {
+      "name": "recovered exact Influx history matches source",
+      "passed": true,
+      "detail": {
+        "start": "2026-10-10T07:04:04.069619+00:00",
+        "stop": "2026-10-10T07:14:04.069619+00:00",
+        "bytes": 40564
+      }
+    },
+    {
+      "name": "Grafana persistent database recovered",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "mode": "real stopped-volume backup and separate-volume recovery",
+  "backup_directory": "C:\\Yun_AI_World\\Projekt\\WAGO-PFC300-RLT-EdgePC-KI-WebVisu-Grafana\\backups\\rlt-20261010-091404"
+}

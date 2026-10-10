@@ -1,0 +1,4 @@
+# Optional loopback MQTT integration fixture; NOT part of production Compose
+-r requirements.lock
+amqtt==0.11.3
+PyYAML==6.0.2

@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-10-10T07:24:25.851694+00:00",
+  "engine": {
+    "version": "29.8.2",
+    "os": "linux",
+    "architecture": "x86_64"
+  },
+  "services": [
+    {
+      "Name": "rlt-simulation-backend-1",
+      "Service": "backend",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "rlt-simulation-backend:1.0.1",
+      "Ports": "",
+      "image_id": "sha256:264b56d7e240561397ac95c4f33d03a421229036084363489b690bcfdd295c2d"
+    },
+    {
+      "Name": "rlt-simulation-frontend-1",
+      "Service": "frontend",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "rlt-simulation-frontend:1.0.1",
+      "Ports": "127.0.0.1:8080->80/tcp",
+      "image_id": "sha256:0733a52d027eff4b2ec70a672292bb2be99dff40b322fdc6a3bd53b307b9b414"
+    },
+    {
+      "Name": "rlt-simulation-grafana-1",
+      "Service": "grafana",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "grafana/grafana:11.6.1",
+      "Ports": "127.0.0.1:3000->3000/tcp",
+      "image_id": "sha256:52c3e20686b860c6dc1f623811565773cf51eefa378817a4896dfc863c3c82c8"
+    },
+    {
+      "Name": "rlt-simulation-influxdb-1",
+      "Service": "influxdb",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "influxdb:2.7.11",
+      "Ports": "8086/tcp",
+      "image_id": "sha256:d92a10e9e75aff18eca38ff3a8f0b4a800706a5dd44d1b0ece264af04458525b"
+    },
+    {
+      "Name": "rlt-simulation-mqtt-1",
+      "Service": "mqtt",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "eclipse-mosquitto:2.0.21",
+      "Ports": "1883/tcp",
+      "image_id": "sha256:94f5a3d7deafa59fa3440d227ddad558f59d293c612138de841eec61bfa4d353"
+    },
+    {
+      "Name": "rlt-simulation-simulation-1",
+      "Service": "simulation",
+      "State": "running",
+      "Health": "healthy",
+      "Image": "rlt-simulation-simulation:1.0.1",
+      "Ports": "",
+      "image_id": "sha256:6b582b98a22735f6b1e67ba6e436c1a7f93882f5e1764648bd9951a904e41557"
+    }
+  ],
+  "all_healthy": true
+}
