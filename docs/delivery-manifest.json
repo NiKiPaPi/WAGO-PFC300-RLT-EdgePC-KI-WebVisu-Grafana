@@ -26,7 +26,7 @@
   },
   {
     "path": "compose.yaml",
-    "sha256": "3196530bd8e703d95637f46bebd79dcac0b1f27e76f4dca71c257412fc47c303",
+    "sha256": "54bdfdb973f6676f1c265e117f0715eefb2ea90400b4b9c9866dc05f1977530e",
     "bytes": 4382
   },
   {
@@ -90,6 +90,11 @@
     "bytes": 3381
   },
   {
+    "path": "docs/ANLAGENBILD_1.0.2.md",
+    "sha256": "60b9b0028a77f6ad9acf025d770f7504941cbeec2afd749d64f8c1da72a1008e",
+    "bytes": 3453
+  },
+  {
     "path": "docs/ARCHITECTURE.md",
     "sha256": "60fa032bd05876c8f9e986ed1ac120e8dff3db80507d90ca803f9f3b80204461",
     "bytes": 3199
@@ -101,7 +106,7 @@
   },
   {
     "path": "docs/container-state.json",
-    "sha256": "bfac6b93ae6d1fca37f203a4fed1a82be51c9ec04f4fac39c90d6905a24b9675",
+    "sha256": "254d4d551e0b61dfb20b6b99de41e441c1219660ea1a3f27a5a6c4d851cea29e",
     "bytes": 2063
   },
   {
@@ -116,33 +121,33 @@
   },
   {
     "path": "docs/docker-grafana-mixed.png",
-    "sha256": "a61d433d0b0ac869b2d72e69fe04af6b71bdf6e9bac447e9e77d0857c4a553b5",
-    "bytes": 117321
+    "sha256": "d67996b1157493e34aab47c22379abf8905e66a6d9aa17562fe91c828eec0d13",
+    "bytes": 115741
   },
   {
     "path": "docs/docker-grafana.png",
-    "sha256": "df1e752012a81728dbac5da0c7306779a23f8a826865320235b5c99e3451db2d",
-    "bytes": 98495
+    "sha256": "2c4bbd3dec6019cbcd3020ffcf63ddfbc96465095640eb39c801a073c5ba3943",
+    "bytes": 97664
   },
   {
     "path": "docs/docker-hmi-desktop.png",
-    "sha256": "aa231b7efede9ab6610ae8cda5ad34514c7aebf0eddb410dff160853f4d9df0f",
-    "bytes": 111177
+    "sha256": "412366bdf04561495bfdb1b18726cd06a5a2db0ac2ac289482efaf59df0187fc",
+    "bytes": 116985
   },
   {
     "path": "docs/docker-hmi-phone.png",
-    "sha256": "2bd574cea67aabe4b0a26403e26f8606c429027082114ec53250e508bb770dbb",
-    "bytes": 68154
+    "sha256": "98d75476655ef1fe0d8cf707e98c147763f9ba97d4a79bfd6cde3ba650027476",
+    "bytes": 75275
   },
   {
     "path": "docs/docker-hmi-tablet.png",
-    "sha256": "6523ed516df21858619b9c3c3395e7423fea32743821f8b107c83fe4cdf2bd62",
-    "bytes": 87910
+    "sha256": "075cca89ae0458fb8bd2ee3646aa36626a8642cdfc74be1ce647148bf34050c5",
+    "bytes": 96248
   },
   {
     "path": "docs/docker-ui-results.json",
-    "sha256": "08cef41c06cb0dd38542a686b6ff3e6b9ea8f4a625ed9dba8a0e22b8833519b8",
-    "bytes": 1950
+    "sha256": "46d76e5a8fd6881e9e0900d6ffb34394ac3a237904a71023b29bc1babe129c3f",
+    "bytes": 1978
   },
   {
     "path": "docs/DOCKER_ACCEPTANCE_REPORT.md",
@@ -221,8 +226,8 @@
   },
   {
     "path": "frontend/index.html",
-    "sha256": "85c480ca3ba852430edb07e44e837dcc3ee55c96b858377f285c46bc05f382e0",
-    "bytes": 265
+    "sha256": "f19da0bda31c9e37b574ed9a3f61b16229522a65194c9fdec7f7f8e6594fe757",
+    "bytes": 269
   },
   {
     "path": "frontend/package.json",
@@ -241,13 +246,13 @@
   },
   {
     "path": "frontend/src/main.tsx",
-    "sha256": "2c4bc5f3eebafe83f97da94f102f90a65a4aea065acc62601f956e97aba820e4",
-    "bytes": 19642
+    "sha256": "617d5c01b04af43c89a1bb07eb7b0502cba4dcc7e26fced9505a40ce2e92b0dd",
+    "bytes": 21086
   },
   {
     "path": "frontend/src/style.css",
-    "sha256": "67a6bb553c2e0ded26ac51a957ca9ec94d27aa21e04557f2f6e0ec1440c2633a",
-    "bytes": 5342
+    "sha256": "1c66abaf497c7844d6a9246a602926a1c33954dc38c47a3fb66895c199f38d89",
+    "bytes": 5988
   },
   {
     "path": "frontend/tsconfig.json",
@@ -416,8 +421,8 @@
   },
   {
     "path": "tests/docker-ui.mjs",
-    "sha256": "e0007282c95c450f9666552cb5bbc516e6a400ea44e6fec5b1da82f60ff10518",
-    "bytes": 6332
+    "sha256": "0358aa64c6f0b73615abead401bbc6b8d0f91a5b3fe0fcb5bfb488ab41ddb5ba",
+    "bytes": 6718
   },
   {
     "path": "tests/test_api.py",

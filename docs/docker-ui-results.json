@@ -1,6 +1,6 @@
 {
   "mode": "real Docker HMI / Mosquitto / InfluxDB / Grafana",
-  "timestamp": "2026-10-10T07:21:55.646Z",
+  "timestamp": "2026-10-10T11:57:33.387Z",
   "checks": [
     {
       "name": "operator login and fresh WebSocket",
@@ -19,7 +19,7 @@
       "passed": true
     },
     {
-      "name": "command result visible",
+      "name": "confirmation canceled without writing plant values",
       "passed": true
     },
     {

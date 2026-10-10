@@ -82,7 +82,7 @@ services:
       retries: 10
       start_period: 30s
   frontend:
-    image: rlt-simulation-frontend:1.0.1
+    image: rlt-simulation-frontend:1.0.2
     build: {context: ., dockerfile: docker/Frontend.Dockerfile}
     restart: unless-stopped
     ports: ['127.0.0.1:8080:80']

@@ -6,6 +6,7 @@ const {chromium}=await import(pathToFileURL(path.join(process.env.PLAYWRIGHT_MOD
 const env=Object.fromEntries(fs.readFileSync('.env','utf8').split(/\r?\n/).filter(x=>x&&!x.startsWith('#')&&x.includes('=')).map(x=>[x.slice(0,x.indexOf('=')),x.slice(x.indexOf('=')+1)]));
 const evidence={mode:'real Docker HMI / Mosquitto / InfluxDB / Grafana',timestamp:new Date().toISOString(),checks:[],screenshots:[]};
 const errors=[];let browser;
+const readOnly=process.env.RLT_UI_READ_ONLY==='true';
 function check(name,ok){evidence.checks.push({name,passed:!!ok});if(!ok)throw new Error(name);}
 try{
  browser=await chromium.launch({headless:true,...(process.env.RLT_BROWSER_PATH?{executablePath:process.env.RLT_BROWSER_PATH}:{})});
@@ -13,9 +14,11 @@ try{
  await page.goto('http://localhost:8080');await page.locator('input[autocomplete=username]').fill('operator');await page.locator('input[autocomplete=current-password]').fill(env.INITIAL_OPERATOR_PASSWORD);await page.getByRole('button',{name:'Anmelden',exact:true}).click();await page.getByText('● Daten aktuell',{exact:true}).waitFor();
  check('operator login and fresh WebSocket',true);check('no testdouble banner',!(await page.locator('.notice').innerText()).includes('Testdouble'));
  await page.getByRole('button',{name:'Außenluftklappe',exact:true}).click();await page.getByRole('dialog',{name:'Außenluftklappe',exact:true}).waitFor();check('component details',true);await page.getByRole('button',{name:'Schließen ×',exact:true}).click();
- await page.locator('input[id="temperature.requested"]').fill('22');await page.locator('.control').filter({has:page.locator('input[id="temperature.requested"]')}).getByRole('button',{name:'Ändern',exact:true}).click();
- const confirmation=page.getByRole('dialog',{name:'Änderung bestätigen',exact:true});await confirmation.waitFor();check('confirmation target and requested value',(await confirmation.innerText()).includes('22'));await confirmation.getByRole('button',{name:'Bestätigen',exact:true}).click();
- await page.getByRole('button',{name:'Bedienung',exact:true}).click();await page.waitForTimeout(1500);check('command result visible',(await page.locator('tbody').innerText()).includes('Logik ausgeführt'));await page.getByRole('button',{name:'Übersicht',exact:true}).click();
+ const requestedValue=readOnly?await page.locator('input[id="temperature.requested"]').inputValue():'22';
+ if(!readOnly)await page.locator('input[id="temperature.requested"]').fill(requestedValue);await page.locator('.control').filter({has:page.locator('input[id="temperature.requested"]')}).getByRole('button',{name:'Ändern',exact:true}).click();
+ const confirmation=page.getByRole('dialog',{name:'Änderung bestätigen',exact:true});await confirmation.waitFor();check('confirmation target and requested value',(await confirmation.innerText()).includes(requestedValue));
+ if(readOnly){await confirmation.getByRole('button',{name:'Abbrechen',exact:true}).click();check('confirmation canceled without writing plant values',!(await confirmation.isVisible()));}
+ else{await confirmation.getByRole('button',{name:'Bestätigen',exact:true}).click();await page.getByRole('button',{name:'Bedienung',exact:true}).click();await page.waitForTimeout(1500);check('command result visible',(await page.locator('tbody').innerText()).includes('Logik ausgeführt'));await page.getByRole('button',{name:'Übersicht',exact:true}).click();}
  for(const [name,width,height] of [['desktop',1440,1000],['tablet',820,1180],['phone',390,844]]){
    await page.setViewportSize({width,height});await page.evaluate(()=>{document.activeElement?.blur();scrollTo(0,0);});await page.mouse.move(0,0);await page.screenshot({path:`docs/docker-hmi-${name}.png`,fullPage:true});evidence.screenshots.push(`docs/docker-hmi-${name}.png`);
    check(name+' page does not overflow',!(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1)));

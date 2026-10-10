@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-10T07:24:25.851694+00:00",
+  "timestamp": "2026-10-10T12:00:42.778217+00:00",
   "engine": {
     "version": "29.8.2",
     "os": "linux",
@@ -20,9 +20,9 @@
       "Service": "frontend",
       "State": "running",
       "Health": "healthy",
-      "Image": "rlt-simulation-frontend:1.0.1",
+      "Image": "rlt-simulation-frontend:1.0.2",
       "Ports": "127.0.0.1:8080->80/tcp",
-      "image_id": "sha256:0733a52d027eff4b2ec70a672292bb2be99dff40b322fdc6a3bd53b307b9b414"
+      "image_id": "sha256:30d81eeb6e401daf79f71ad7b3b483409b7108ad60f496ff81899cdf08202c67"
     },
     {
       "Name": "rlt-simulation-grafana-1",

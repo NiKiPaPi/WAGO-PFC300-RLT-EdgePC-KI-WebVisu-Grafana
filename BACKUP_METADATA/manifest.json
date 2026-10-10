@@ -30,8 +30,8 @@
     {
       "path": "compose.yaml",
       "bytes": 4382,
-      "source_sha256": "3196530bd8e703d95637f46bebd79dcac0b1f27e76f4dca71c257412fc47c303",
-      "backup_sha256": "3196530bd8e703d95637f46bebd79dcac0b1f27e76f4dca71c257412fc47c303",
+      "source_sha256": "54bdfdb973f6676f1c265e117f0715eefb2ea90400b4b9c9866dc05f1977530e",
+      "backup_sha256": "54bdfdb973f6676f1c265e117f0715eefb2ea90400b4b9c9866dc05f1977530e",
       "sanitized_template": false
     },
     {
@@ -168,6 +168,12 @@
       "sanitized_template": false
     },
     {
+      "path": "docs/ANLAGENBILD_1.0.2.md",
+      "bytes": 3453,
+      "source_sha256": "60b9b0028a77f6ad9acf025d770f7504941cbeec2afd749d64f8c1da72a1008e",
+      "backup_sha256": "60b9b0028a77f6ad9acf025d770f7504941cbeec2afd749d64f8c1da72a1008e"
+    },
+    {
       "path": "docs/ARCHITECTURE.md",
       "bytes": 3199,
       "source_sha256": "60fa032bd05876c8f9e986ed1ac120e8dff3db80507d90ca803f9f3b80204461",
@@ -184,15 +190,15 @@
     {
       "path": "docs/container-state.json",
       "bytes": 2063,
-      "source_sha256": "bfac6b93ae6d1fca37f203a4fed1a82be51c9ec04f4fac39c90d6905a24b9675",
-      "backup_sha256": "bfac6b93ae6d1fca37f203a4fed1a82be51c9ec04f4fac39c90d6905a24b9675",
+      "source_sha256": "254d4d551e0b61dfb20b6b99de41e441c1219660ea1a3f27a5a6c4d851cea29e",
+      "backup_sha256": "254d4d551e0b61dfb20b6b99de41e441c1219660ea1a3f27a5a6c4d851cea29e",
       "sanitized_template": false
     },
     {
       "path": "docs/delivery-manifest.json",
-      "bytes": 13342,
-      "source_sha256": "8ac76561547335b1d40e8466f3f524496865dcce3e946b75a86a26604b7beb87",
-      "backup_sha256": "8ac76561547335b1d40e8466f3f524496865dcce3e946b75a86a26604b7beb87",
+      "bytes": 13497,
+      "source_sha256": "419d5b5f5b8ec9826492b0fcdde7f94bb6f2141327a6453d8949f504c3c10543",
+      "backup_sha256": "419d5b5f5b8ec9826492b0fcdde7f94bb6f2141327a6453d8949f504c3c10543",
       "sanitized_template": false
     },
     {
@@ -211,44 +217,44 @@
     },
     {
       "path": "docs/docker-grafana-mixed.png",
-      "bytes": 117321,
-      "source_sha256": "a61d433d0b0ac869b2d72e69fe04af6b71bdf6e9bac447e9e77d0857c4a553b5",
-      "backup_sha256": "a61d433d0b0ac869b2d72e69fe04af6b71bdf6e9bac447e9e77d0857c4a553b5",
+      "bytes": 115741,
+      "source_sha256": "d67996b1157493e34aab47c22379abf8905e66a6d9aa17562fe91c828eec0d13",
+      "backup_sha256": "d67996b1157493e34aab47c22379abf8905e66a6d9aa17562fe91c828eec0d13",
       "sanitized_template": false
     },
     {
       "path": "docs/docker-grafana.png",
-      "bytes": 98495,
-      "source_sha256": "df1e752012a81728dbac5da0c7306779a23f8a826865320235b5c99e3451db2d",
-      "backup_sha256": "df1e752012a81728dbac5da0c7306779a23f8a826865320235b5c99e3451db2d",
+      "bytes": 97664,
+      "source_sha256": "2c4bbd3dec6019cbcd3020ffcf63ddfbc96465095640eb39c801a073c5ba3943",
+      "backup_sha256": "2c4bbd3dec6019cbcd3020ffcf63ddfbc96465095640eb39c801a073c5ba3943",
       "sanitized_template": false
     },
     {
       "path": "docs/docker-hmi-desktop.png",
-      "bytes": 111177,
-      "source_sha256": "aa231b7efede9ab6610ae8cda5ad34514c7aebf0eddb410dff160853f4d9df0f",
-      "backup_sha256": "aa231b7efede9ab6610ae8cda5ad34514c7aebf0eddb410dff160853f4d9df0f",
+      "bytes": 116985,
+      "source_sha256": "412366bdf04561495bfdb1b18726cd06a5a2db0ac2ac289482efaf59df0187fc",
+      "backup_sha256": "412366bdf04561495bfdb1b18726cd06a5a2db0ac2ac289482efaf59df0187fc",
       "sanitized_template": false
     },
     {
       "path": "docs/docker-hmi-phone.png",
-      "bytes": 68154,
-      "source_sha256": "2bd574cea67aabe4b0a26403e26f8606c429027082114ec53250e508bb770dbb",
-      "backup_sha256": "2bd574cea67aabe4b0a26403e26f8606c429027082114ec53250e508bb770dbb",
+      "bytes": 75275,
+      "source_sha256": "98d75476655ef1fe0d8cf707e98c147763f9ba97d4a79bfd6cde3ba650027476",
+      "backup_sha256": "98d75476655ef1fe0d8cf707e98c147763f9ba97d4a79bfd6cde3ba650027476",
       "sanitized_template": false
     },
     {
       "path": "docs/docker-hmi-tablet.png",
-      "bytes": 87910,
-      "source_sha256": "6523ed516df21858619b9c3c3395e7423fea32743821f8b107c83fe4cdf2bd62",
-      "backup_sha256": "6523ed516df21858619b9c3c3395e7423fea32743821f8b107c83fe4cdf2bd62",
+      "bytes": 96248,
+      "source_sha256": "075cca89ae0458fb8bd2ee3646aa36626a8642cdfc74be1ce647148bf34050c5",
+      "backup_sha256": "075cca89ae0458fb8bd2ee3646aa36626a8642cdfc74be1ce647148bf34050c5",
       "sanitized_template": false
     },
     {
       "path": "docs/docker-ui-results.json",
-      "bytes": 1950,
-      "source_sha256": "08cef41c06cb0dd38542a686b6ff3e6b9ea8f4a625ed9dba8a0e22b8833519b8",
-      "backup_sha256": "08cef41c06cb0dd38542a686b6ff3e6b9ea8f4a625ed9dba8a0e22b8833519b8",
+      "bytes": 1978,
+      "source_sha256": "46d76e5a8fd6881e9e0900d6ffb34394ac3a237904a71023b29bc1babe129c3f",
+      "backup_sha256": "46d76e5a8fd6881e9e0900d6ffb34394ac3a237904a71023b29bc1babe129c3f",
       "sanitized_template": false
     },
     {
@@ -358,9 +364,9 @@
     },
     {
       "path": "frontend/index.html",
-      "bytes": 265,
-      "source_sha256": "85c480ca3ba852430edb07e44e837dcc3ee55c96b858377f285c46bc05f382e0",
-      "backup_sha256": "85c480ca3ba852430edb07e44e837dcc3ee55c96b858377f285c46bc05f382e0",
+      "bytes": 269,
+      "source_sha256": "f19da0bda31c9e37b574ed9a3f61b16229522a65194c9fdec7f7f8e6594fe757",
+      "backup_sha256": "f19da0bda31c9e37b574ed9a3f61b16229522a65194c9fdec7f7f8e6594fe757",
       "sanitized_template": false
     },
     {
@@ -400,16 +406,16 @@
     },
     {
       "path": "frontend/src/main.tsx",
-      "bytes": 19642,
-      "source_sha256": "2c4bc5f3eebafe83f97da94f102f90a65a4aea065acc62601f956e97aba820e4",
-      "backup_sha256": "2c4bc5f3eebafe83f97da94f102f90a65a4aea065acc62601f956e97aba820e4",
+      "bytes": 21086,
+      "source_sha256": "617d5c01b04af43c89a1bb07eb7b0502cba4dcc7e26fced9505a40ce2e92b0dd",
+      "backup_sha256": "617d5c01b04af43c89a1bb07eb7b0502cba4dcc7e26fced9505a40ce2e92b0dd",
       "sanitized_template": false
     },
     {
       "path": "frontend/src/style.css",
-      "bytes": 5342,
-      "source_sha256": "67a6bb553c2e0ded26ac51a957ca9ec94d27aa21e04557f2f6e0ec1440c2633a",
-      "backup_sha256": "67a6bb553c2e0ded26ac51a957ca9ec94d27aa21e04557f2f6e0ec1440c2633a",
+      "bytes": 5988,
+      "source_sha256": "1c66abaf497c7844d6a9246a602926a1c33954dc38c47a3fb66895c199f38d89",
+      "backup_sha256": "1c66abaf497c7844d6a9246a602926a1c33954dc38c47a3fb66895c199f38d89",
       "sanitized_template": false
     },
     {
@@ -589,9 +595,9 @@
     },
     {
       "path": "tests/docker-ui.mjs",
-      "bytes": 6332,
-      "source_sha256": "e0007282c95c450f9666552cb5bbc516e6a400ea44e6fec5b1da82f60ff10518",
-      "backup_sha256": "e0007282c95c450f9666552cb5bbc516e6a400ea44e6fec5b1da82f60ff10518",
+      "bytes": 6718,
+      "source_sha256": "0358aa64c6f0b73615abead401bbc6b8d0f91a5b3fe0fcb5bfb488ab41ddb5ba",
+      "backup_sha256": "0358aa64c6f0b73615abead401bbc6b8d0f91a5b3fe0fcb5bfb488ab41ddb5ba",
       "sanitized_template": false
     },
     {
@@ -633,453 +639,493 @@
   "excluded": [
     {
       "path": ".env",
-      "bytes": 697,
-      "reason": "existing-project-gitignore"
+      "reason": "credential-file",
+      "bytes": 697
+    },
+    {
+      "path": ".github-backup.json",
+      "reason": "local-backup-management-file",
+      "bytes": 15359
+    },
+    {
+      "path": "GITHUB_BACKUP.md",
+      "reason": "local-backup-management-file",
+      "bytes": 752
     },
     {
       "path": "backups/rlt-20261010-091044/backend_data.tar.gz",
-      "bytes": 3273,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 3273
     },
     {
       "path": "backups/rlt-20261010-091044/broker_config.tar.gz",
-      "bytes": 586,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 586
     },
     {
       "path": "backups/rlt-20261010-091044/broker_data.tar.gz",
-      "bytes": 285,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 285
     },
     {
       "path": "backups/rlt-20261010-091044/grafana_data.tar.gz",
-      "bytes": 13102947,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 13102947
     },
     {
       "path": "backups/rlt-20261010-091044/influx_config.tar.gz",
-      "bytes": 325,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 325
     },
     {
       "path": "backups/rlt-20261010-091044/influx_data.tar.gz",
-      "bytes": 104835,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 104835
     },
     {
       "path": "backups/rlt-20261010-091044/simulation_data.tar.gz",
-      "bytes": 1301,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 1301
     },
     {
       "path": "backups/rlt-20261010-091404/backend_data.tar.gz",
-      "bytes": 3276,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 3276
     },
     {
       "path": "backups/rlt-20261010-091404/broker_config.tar.gz",
-      "bytes": 587,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 587
     },
     {
       "path": "backups/rlt-20261010-091404/broker_data.tar.gz",
-      "bytes": 286,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 286
     },
     {
       "path": "backups/rlt-20261010-091404/grafana_data.tar.gz",
-      "bytes": 13102392,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 13102392
     },
     {
       "path": "backups/rlt-20261010-091404/influx_config.tar.gz",
-      "bytes": 325,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 325
     },
     {
       "path": "backups/rlt-20261010-091404/influx_data.tar.gz",
-      "bytes": 127804,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 127804
     },
     {
       "path": "backups/rlt-20261010-091404/simulation_data.tar.gz",
-      "bytes": 1301,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 1301
+    },
+    {
+      "path": "data/anlagenbild-frontend-build.log",
+      "reason": "current-project-gitignore",
+      "bytes": 3369
     },
     {
       "path": "data/backup-helper-pull.log",
-      "bytes": 267,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 267
     },
     {
       "path": "data/compose-start.log",
-      "bytes": 8083,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 8083
     },
     {
       "path": "data/grafana-axis-restart.log",
-      "bytes": 95,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 95
     },
     {
       "path": "data/grafana-final-restart.log",
-      "bytes": 95,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 95
     },
     {
       "path": "data/grafana-reconfigure.log",
-      "bytes": 280,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 280
     },
     {
       "path": "data/openapi.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/mqtt-probe/backend.log",
-      "bytes": 3733,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 3733
     },
     {
       "path": "data/mqtt-probe/backend.sqlite",
-      "bytes": 4096,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 4096
     },
     {
       "path": "data/mqtt-probe/backend.sqlite-shm",
-      "bytes": 32768,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 32768
     },
     {
       "path": "data/mqtt-probe/backend.sqlite-wal",
-      "bytes": 3019992,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 3019992
     },
     {
       "path": "data/mqtt-probe/commands.json",
-      "bytes": 17099,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 17099
     },
     {
       "path": "data/mqtt-probe/heartbeat",
-      "bytes": 32,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 32
     },
     {
       "path": "data/mqtt-probe/simulation.log",
-      "bytes": 0,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 0
     },
     {
       "path": "data/mqtt-probe/stop",
-      "bytes": 4,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 4
     },
     {
       "path": "data/test-temp-2/test_anonymous_and_viewer_writ0/db.sqlite",
-      "bytes": 4096,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 4096
     },
     {
       "path": "data/test-temp-2/test_anonymous_and_viewer_writ0/db.sqlite-shm",
-      "bytes": 32768,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 32768
     },
     {
       "path": "data/test-temp-2/test_anonymous_and_viewer_writ0/db.sqlite-wal",
-      "bytes": 70072,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 70072
     },
     {
       "path": "data/test-temp-ack/test_admin_revokes_existing_se0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-ack/test_anonymous_and_viewer_writ0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-ack/test_cross_origin0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-ack/test_duplicate_persists_restar0/journal.json",
-      "bytes": 1812,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 1812
     },
     {
       "path": "data/test-temp-ack/test_expired_result_is_timeout0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-ack/test_identity_audit_and_idempo0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-ack/test_invalid_conflicting_stale0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-ack/test_missing_ack_times_out_wit0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-ack/test_no_client_role_or_identit0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-ack/test_restart_marks_timeout_wit0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-ack/test_websocket_requires_auth_a0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-container-fixes/test_admin_revokes_existing_se0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-container-fixes/test_anonymous_and_viewer_writ0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-container-fixes/test_cross_origin0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-container-fixes/test_duplicate_persists_restar0/journal.json",
-      "bytes": 1837,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 1837
     },
     {
       "path": "data/test-temp-container-fixes/test_expired_result_is_timeout0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-container-fixes/test_identity_audit_and_idempo0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-container-fixes/test_invalid_conflicting_stale0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-container-fixes/test_missing_ack_times_out_wit0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-container-fixes/test_no_client_role_or_identit0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-container-fixes/test_restart_marks_timeout_wit0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-container-fixes/test_websocket_requires_auth_a0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-final/test_admin_revokes_existing_se0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-final/test_anonymous_and_viewer_writ0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-final/test_cross_origin0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-final/test_duplicate_persists_restar0/journal.json",
-      "bytes": 1812,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 1812
     },
     {
       "path": "data/test-temp-final/test_expired_result_is_timeout0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-final/test_identity_audit_and_idempo0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-final/test_invalid_conflicting_stale0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-final/test_no_client_role_or_identit0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-final/test_restart_marks_timeout_wit0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-final/test_websocket_requires_auth_a0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-live/test_admin_revokes_existing_se0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-live/test_anonymous_and_viewer_writ0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-live/test_cross_origin0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-live/test_duplicate_persists_restar0/journal.json",
-      "bytes": 1812,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 1812
     },
     {
       "path": "data/test-temp-live/test_expired_result_is_timeout0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-live/test_identity_audit_and_idempo0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-live/test_invalid_conflicting_stale0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-live/test_no_client_role_or_identit0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-live/test_restart_marks_timeout_wit0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-live/test_websocket_requires_auth_a0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-release/test_admin_revokes_existing_se0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-release/test_anonymous_and_viewer_writ0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-release/test_cross_origin0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-release/test_duplicate_persists_restar0/journal.json",
-      "bytes": 1837,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 1837
     },
     {
       "path": "data/test-temp-release/test_expired_result_is_timeout0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-release/test_identity_audit_and_idempo0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-release/test_invalid_conflicting_stale0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-release/test_missing_ack_times_out_wit0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-release/test_no_client_role_or_identit0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-release/test_restart_marks_timeout_wit0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
     },
     {
       "path": "data/test-temp-release/test_websocket_requires_auth_a0/db.sqlite",
-      "bytes": 45056,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 45056
+    },
+    {
+      "path": "data/versions/anlagenbild-1.0.1/compose.yaml",
+      "reason": "current-project-gitignore",
+      "bytes": 4382
+    },
+    {
+      "path": "data/versions/anlagenbild-1.0.1/index.html",
+      "reason": "current-project-gitignore",
+      "bytes": 265
+    },
+    {
+      "path": "data/versions/anlagenbild-1.0.1/main.tsx",
+      "reason": "current-project-gitignore",
+      "bytes": 19642
+    },
+    {
+      "path": "data/versions/anlagenbild-1.0.1/style.css",
+      "reason": "current-project-gitignore",
+      "bytes": 5342
     },
     {
       "path": "frontend/dist/index.html",
-      "bytes": 364,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 364
     },
     {
       "path": "frontend/dist/assets/index-CVs-zpt1.js",
-      "bytes": 205936,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 205936
     },
     {
       "path": "frontend/dist/assets/index-DmkKe4W-.css",
-      "bytes": 5356,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 5356
     },
     {
       "path": "release/rlt-simulation-1.0.0.zip",
-      "bytes": 343397,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 343397
     },
     {
       "path": "release/rlt-simulation-1.0.1.zip",
-      "bytes": 833000,
-      "reason": "existing-project-gitignore"
+      "reason": "current-project-gitignore",
+      "bytes": 833000
+    },
+    {
+      "path": "release/rlt-simulation-1.0.2.zip",
+      "reason": "current-project-gitignore",
+      "bytes": 853962
     }
   ],
   "notes": [
@@ -1087,10 +1133,9 @@
     ".env.example password values, where present, are replaced with placeholders in this backup.",
     "Dependencies, installation downloads and runtime data excluded by the original project .gitignore are not backed up.",
     "Secret scanning covered supported text files and supported archive entries; opaque binaries and video content cannot be certified free of secrets.",
-    "Additional .gitignore exclusions are present only in the backup copy; source code and documents are unchanged."
+    "Additional .gitignore exclusions are present only in the backup copy; source code and documents are unchanged.",
+    "This update was explicitly approved after showing its content list. Every future upload requires a new content preview and user confirmation. Videos and local backup-management files are excluded."
   ],
-  "source_total_files": 5320,
-  "source_total_bytes": 849858378,
   "excluded_dependency_or_cache_directories": [
     ".install",
     ".pytest_cache",
@@ -1101,5 +1146,8 @@
     "scripts/__pycache__",
     "simulation/__pycache__",
     "tests/__pycache__"
-  ]
+  ],
+  "project_display_name": "WAGO-PFC300-MSR-EdgePC-KI-WebVisu-Grafana",
+  "previous_backup_commit": "c8f5248357057c0aca300fc173fa7c9948e000dd",
+  "update_summary": "Anlagenbild 1.0.2: frontend layout/title/style, frontend image version, documentation, screenshots and validation records; 1 added and 13 modified original project files."
 }
